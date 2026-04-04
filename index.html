@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Data Analyst · Graphic Designer · Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+        <img src="Photos/Bklogo.png" alt="BK Logo" class="nav-logo-img" />
+      </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#additional">More</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="hero-bg-text">PORTFOLIO</div>
+    <div class="hero-content">
+      <p class="hero-tag">Available for work</p>
+      <h1 class="hero-name">Bharath Kumar</h1>
+      <div class="role-slider">
+        <span class="role-track">
+          <span class="role-item active">Data Analyst</span>
+          <span class="role-item">Graphic Designer</span>
+          <span class="role-item">Software Developer</span>
+        </span>
+      </div>
+      <p class="hero-desc">I turn data into decisions, pixels into experiences,<br>and ideas into working software.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">scroll down ↓</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="section-label">About</div>
+      <div class="about-grid">
+        <div class="about-photo-wrap">
+            <div class="about-photo-placeholder">
+                <img src="Photos\photo.jpeg" alt="Bharath Kumar" />
+              </div>
+          <div class="about-badge">Open to opportunities</div>
+        </div>
+        <div class="about-text">
+          <h2 class="section-title">The person<br>behind the work</h2>
+          <p>Hi! I'm <strong>Bharath Kumar</strong> — a multi-disciplinary creator based in <strong>Bengaluru, India</strong>.</p>
+          <p>With hands-on experience in data analysis, visual design, and software development, I bring a rare combination of left-brain logic and right-brain creativity to every project.</p>
+          <div class="about-stats">
+            <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Roles mastered</span></div>
+            <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Projects built</span></div>
+            <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Passion driven</span></div>
+          </div>
+          <div class="resume-btns">
+            <a href="resumes/S_Bharath_Kumar_Data_Analyst.pdf" class="btn btn-resume" download>
+               Data Analyst CV
+            </a>
+            <a href="resumes/S.BharathKumar_Developer.pdf" class="btn btn-resume" download>
+               Developer CV
+            </a>
+            <a href="resumes/my-portfolio/resumes/Bharath_Designs_.pdf" class="btn btn-resume" download>
+               Designer CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience section">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Where I've<br>worked</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div>
+              <h3>Data Analyst Intern</h3>
+              <span class="timeline-company">Inditronics Pvt Ltd — Pune, Maharashtra</span>
+            </div>
+            <span class="timeline-date">Jul 2025 – Oct 2025</span>
+          </div>
+          <ul class="timeline-points">
+            <li>Cleaned and standardized 50,000+ records using Python and Excel, improving data accuracy</li>
+            <li>Built automated data quality validation scripts reducing manual effort by 30%</li>
+            <li>Designed Power BI dashboards tracking 8–10 KPIs for management reporting</li>
+            <li>🏆 Recognized as Employee of the Month for analytical performance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div>
+              <h3>AI DevOps Intern</h3>
+              <span class="timeline-company">Roman Technologies – IBM Collaboration — Bengaluru</span>
+            </div>
+            <span class="timeline-date">Oct 2024 – Feb 2025</span>
+          </div>
+          <ul class="timeline-points">
+            <li>Optimized deployment speed using CI/CD pipelines reducing production issues</li>
+            <li>Improved deployment reliability through DevOps automation practices</li>
+            <li>Maintained stable production environments with continuous integration</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills section">
+    <div class="container">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">What I bring<br>to the table</h2>
+      <div class="skills-tabs">
+        <button class="tab-btn active" data-tab="analyst">Data Analyst</button>
+        <button class="tab-btn" data-tab="designer">Graphic Designer</button>
+        <button class="tab-btn" data-tab="developer">Developer</button>
+      </div>
+
+      <div class="tab-content active" id="tab-analyst">
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-icon">📊</div><h4>Python & Pandas</h4><div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">📈</div><h4>SQL & Databases</h4><div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">📉</div><h4>Power BI / Tableau</h4><div class="skill-bar"><div class="skill-fill" style="--pct:75%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🔍</div><h4>Data Cleaning</h4><div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">📋</div><h4>Excel / Sheets</h4><div class="skill-bar"><div class="skill-fill" style="--pct:95%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🤖</div><h4>Machine Learning</h4><div class="skill-bar"><div class="skill-fill" style="--pct:65%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-designer">
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-icon">🎨</div><h4>Figma</h4><div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">✏️</div><h4>Adobe Illustrator</h4><div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🖼️</div><h4>Photoshop</h4><div class="skill-bar"><div class="skill-fill" style="--pct:75%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🎬</div><h4>After Effects</h4><div class="skill-bar"><div class="skill-fill" style="--pct:60%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🖋️</div><h4>Typography</h4><div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">📐</div><h4>UI/UX Design</h4><div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-developer">
+        <div class="skills-grid">
+          <div class="skill-card"><div class="skill-icon">💻</div><h4>HTML / CSS / JS</h4><div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">⚛️</div><h4>React.js</h4><div class="skill-bar"><div class="skill-fill" style="--pct:75%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🐍</div><h4>Python</h4><div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🗃️</div><h4>Git & GitHub</h4><div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🌐</div><h4>REST APIs</h4><div class="skill-bar"><div class="skill-fill" style="--pct:70%"></div></div></div>
+          <div class="skill-card"><div class="skill-icon">🛢️</div><h4>MySQL / MongoDB</h4><div class="skill-bar"><div class="skill-fill" style="--pct:72%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Featured<br>work</h2>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="analyst">Data Analyst</button>
+        <button class="filter-btn" data-filter="designer">Graphic Design</button>
+        <button class="filter-btn" data-filter="developer">Developer</button>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card" data-cat="developer">
+          <div class="project-thumb dev-thumb">💻</div>
+          <div class="project-info">
+            <span class="project-tag">Developer</span>
+            <h3>Task Manager App</h3>
+            <p>Full-stack to-do app with user auth, CRUD operations, and React frontend backed by Node.js.</p>
+            <div class="project-links">
+              <a href="#" class="plink">Live Demo →</a>
+              <a href="#" class="plink-gh">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-cat="designer">
+          <div class="project-thumb">
+            <img src="Photos/desg.png" alt="Social Media Designs" />
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Graphic Design</span>
+            <h3>Social Media Creatives</h3>
+            <p>Pizza ads, sports posters, perfume campaigns and photo manipulations — designed for real brand vibes using Photoshop & Illustrator.</p>
+            <div class="project-links">
+              <a href="#" class="plink">View Project →</a>
+              <a href="#" class="plink-gh">Behance</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-cat="designer">
+          <div class="project-thumb">
+            <img src="Projects/Logos.png" alt="Logo Designs" />
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Graphic Design</span>
+            <h3>Logo & Brand Identity</h3>
+            <p>7+ logo designs including BK, Binpin Jewelry, Betadur Constructions, Nexora Fashion and Veloura Fashion — built from scratch.</p>
+            <div class="project-links">
+              <a href="#" class="plink">View Project →</a>
+              <a href="#" class="plink-gh">Behance</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-cat="analyst">
+          <div class="project-thumb">
+            <img src="Projects\Sales Dashboard.png" alt="Sales Dashboard" />
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Data Analyst</span>
+            <h3>Sales Dashboard</h3>
+            <p>Interactive Power BI dashboard tracking ₹46.69M sales, 10K orders across regions with monthly trends and category breakdowns.</p>
+            <div class="project-links">
+              <a href="https://github.com/gitboy321/Sales-Performance-EDA-Project" class="plink">View Project →</a>
+              <a href="https://github.com/gitboy321/Sales-Performance-EDA-Project" class="plink-gh">GitHub</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-cat="analyst">
+          <div class="project-thumb">
+            <img src="projects\sales-insights.png" alt="Sales Insights" />
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Data Analyst</span>
+            <h3>Sales Insights & Analysis</h3>
+            <p>Deep customer segmentation analysis with discount vs profit correlation, top customer rankings and segment-wise revenue breakdown.</p>
+            <div class="project-links">
+              <a href="https://github.com/gitboy321/Sales-Performance-EDA-Project" class="plink">View Project →</a>
+              <a href="https://github.com/gitboy321/Sales-Performance-EDA-Project" class="plink-gh">GitHub</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-cat="analyst">
+          <div class="project-thumb">
+            <img src="projects\hospital-dashboard.png" alt="Hospital Dashboard" />
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Data Analyst</span>
+            <h3>Hospital Care Dashboard</h3>
+            <p>Healthcare analytics dashboard showing 352K revenue, department-wise billing, patient payment status and disease cost analysis.</p>
+            <div class="project-links">
+              <a href="https://github.com/gitboy321/Health_care-Project-" class="plink">View Project →</a>
+              <a href="https://github.com/gitboy321/Health_care-Project-" class="plink-gh">GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-cat="analyst">
+          <div class="project-thumb">
+            <img src="projects/car-predictor.png" alt="Used Car Price Predictor" />
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Data Science</span>
+            <h3>Used Car Price Predictor</h3>
+            <p>ML-powered web app predicting used car prices based on brand, age, km driven, fuel type and transmission using Python & scikit-learn.</p>
+            <div class="project-links">
+              <a href="https://github.com/gitboy321/Used-Car-Price-Predictor" class="plink">View Project →</a>
+              <a href="https://github.com/gitboy321/Used-Car-Price-Predictor" class="plink-gh">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-cat="analyst">
+          <div class="project-thumb">
+            <img src="projects/airbnb.png" alt="London Airbnb Analysis" />
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Data Analyst</span>
+            <h3>London Airbnb Analysis</h3>
+            <p>Exploratory Data Analysis on London Airbnb listings using Pandas, Matplotlib & Seaborn — uncovering pricing patterns, host behaviour and customer demand.</p>
+            <div class="project-links">
+              <a href="https://github.com/gitboy321/London_Airbnb" class="plink">View Project →</a>
+              <a href="https://github.com/gitboy321/London_Airbnb" class="plink-gh">GitHub</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-cat="analyst">
+          <div class="project-thumb">
+            <img src="projects/bank-churn.png" alt="Bank Customer Churn" />
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Data Analyst</span>
+            <h3>Bank Customer Churn</h3>
+            <p>Binary classification EDA to identify churning bank customers using customer demographic, financial and activity data with Python & Seaborn.</p>
+            <div class="project-links">
+              <a href="https://github.com/gitboy321/BankCustomerChurn" class="plink">View Project →</a>
+              <a href="https://github.com/gitboy321/BankCustomerChurn" class="plink-gh">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card" data-cat="developer">
+          <div class="project-thumb dev-thumb">🌐</div>
+          <div class="project-info">
+            <span class="project-tag">Developer</span>
+            <h3>E-Commerce Website</h3>
+            <p>Responsive shopping site with cart, payment integration, and admin panel.</p>
+            <div class="project-links">
+              <a href="#" class="plink">Live Demo →</a>
+              <a href="#" class="plink-gh">GitHub</a>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- ADDITIONAL WORKS -->
+<section id="additional" class="additional section">
+  <div class="container">
+    <div class="section-label">Additional Works</div>
+    <h2 class="section-title">Beyond the<br>resume</h2>
+    <p class="additional-sub">A glimpse into my world — life beyond the screen.</p>
+  </div>
+
+  <div class="slideshow-wrap">
+    <div class="slideshow" id="slideshow">
+      <div class="slide active">
+        <img src="certificate/cert1.png" alt="Photo 1" />
+        <div class="slide-caption">Caption 1</div>
+      </div>
+      <div class="slide">
+        <img src="certificate/cert2.png" alt="Photo 2" />
+        <div class="slide-caption">Caption 2</div>
+      </div>
+      <div class="slide">
+        <img src="certificate/cert3.png" alt="Photo 3" />
+        <div class="slide-caption">Caption 3</div>
+      </div>
+      <div class="slide">
+        <img src="certificate/cert4.png" alt="Photo 4" />
+        <div class="slide-caption">Caption 4</div>
+      </div>
+      <div class="slide">
+        <img src="certificate/cert5.png" alt="Photo 5" />
+        <div class="slide-caption">Caption 5</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="slide-btn slide-prev" id="slidePrev">&#8592;</button>
+    <button class="slide-btn slide-next" id="slideNext">&#8594;</button>
+
+    <!-- Dots -->
+    <div class="slide-dots" id="slideDots"></div>
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's build<br>something together</h2>
+      <p class="contact-sub">Whether you have a project in mind or just want to connect — my inbox is always open.</p>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="ci-icon"></span>
+            <div><strong>Email</strong><br><a href="mailto:you@email.com">kumarbharatvgsb321@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon"></span>
+            <div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/s-bharath-kumar-775359256" target="_blank">linkedin.com/in/s-bharath-kumar-775359256</a></div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon"></span>
+            <div><strong>GitHub</strong><br><a href="https://github.com/gitboy321" target="_blank">https://github.com/gitboy321</a></div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon"></span>
+            <div><strong>Location</strong><br>Bengaluru, India</div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" placeholder="What's this about?" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message →</button>
+          <div class="form-success" id="formSuccess">✅ Message sent! I'll get back to you soon.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <span>© 2026 Bharath Kumar — Built with HTML, CSS & JS</span>
+      <span>Bengaluru, India 🇮🇳</span>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
