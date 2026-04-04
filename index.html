@@ -254,7 +254,7 @@
         
         <div class="project-card" data-cat="analyst">
           <div class="project-thumb">
-            <img src="projects\sales-insights.png" alt="Sales Insights" />
+            <img src="Projects\sales-insights.png" alt="Sales Insights" />
           </div>
           <div class="project-info">
             <span class="project-tag">Data Analyst</span>
@@ -269,7 +269,7 @@
         
         <div class="project-card" data-cat="analyst">
           <div class="project-thumb">
-            <img src="projects\hospital-dashboard.png" alt="Hospital Dashboard" />
+            <img src="Projects\hospital-dashboard.png" alt="Hospital Dashboard" />
           </div>
           <div class="project-info">
             <span class="project-tag">Data Analyst</span>
@@ -283,7 +283,7 @@
         </div>
         <div class="project-card" data-cat="analyst">
           <div class="project-thumb">
-            <img src="projects/car-predictor.png" alt="Used Car Price Predictor" />
+            <img src="Projects/car-predictor.png" alt="Used Car Price Predictor" />
           </div>
           <div class="project-info">
             <span class="project-tag">Data Science</span>
@@ -298,7 +298,7 @@
 
         <div class="project-card" data-cat="analyst">
           <div class="project-thumb">
-            <img src="projects/airbnb.png" alt="London Airbnb Analysis" />
+            <img src="Projects/airbnb.png" alt="London Airbnb Analysis" />
           </div>
           <div class="project-info">
             <span class="project-tag">Data Analyst</span>
@@ -313,7 +313,7 @@
         
         <div class="project-card" data-cat="analyst">
           <div class="project-thumb">
-            <img src="projects/bank-churn.png" alt="Bank Customer Churn" />
+            <img src="Projects/bank-churn.png" alt="Bank Customer Churn" />
           </div>
           <div class="project-info">
             <span class="project-tag">Data Analyst</span>
@@ -371,6 +371,21 @@
         <img src="certificate/cert4.png" alt="Photo 4" />
         <div class="slide-caption">Caption 4</div>
       </div>
+
+      <div class="slide">
+        <img src="certificate/cert6.png" alt="Photo 4" />
+        <div class="slide-caption">Caption 4</div>
+      </div>
+
+      <div class="slide">
+        <img src="certificate/cert7.png" alt="Photo 4" />
+        <div class="slide-caption">Caption 4</div>
+      </div>
+      <div class="slide">
+        <img src="certificate/cert8.png" alt="Photo 4" />
+        <div class="slide-caption">Caption 4</div>
+      </div>
+
       <div class="slide">
         <img src="certificate/cert5.png" alt="Photo 5" />
         <div class="slide-caption">Caption 5</div>
@@ -411,24 +426,24 @@
             <div><strong>Location</strong><br>Bengaluru, India</div>
           </div>
         </div>
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xzdkjqyq" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label>Name</label>
-              <input type="text" placeholder="Your name" required />
+              <input type="text" placeholder="Your name" required name="name" />
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="email" placeholder="your@email.com" required />
+              <input type="email" placeholder="your@email.com" required name="email" />
             </div>
           </div>
           <div class="form-group">
             <label>Subject</label>
-            <input type="text" placeholder="What's this about?" />
+            <input type="text" placeholder="What's this about?" name="subject" />
           </div>
           <div class="form-group">
             <label>Message</label>
-            <textarea rows="5" placeholder="Tell me about your project..." required></textarea>
+            <textarea rows="5" placeholder="Tell me about your project..." required name="message"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Send Message →</button>
           <div class="form-success" id="formSuccess">✅ Message sent! I'll get back to you soon.</div>
