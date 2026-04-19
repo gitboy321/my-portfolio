@@ -345,6 +345,108 @@ section {
 }
 .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; display: block; }
 
+/* ABOUT SLIDER */
+.about-slider {
+  margin-top: 2rem;
+  border: 1px solid #ecddd8;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.about-slider-tabs {
+  display: flex;
+  border-bottom: 1px solid #ecddd8;
+}
+
+.aslide-btn {
+  flex: 1;
+  padding: 0.8rem 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: #f9f9f9;
+  color: #888888;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-right: 1px solid #ecddd8;
+}
+
+.aslide-btn:last-child { border-right: none; }
+
+.aslide-btn.active,
+.aslide-btn:hover {
+  background: #ffffff;
+  color: #cc0000;
+}
+
+.aslide-content {
+  display: none;
+  padding: 1.2rem 1.5rem;
+  flex-direction: column;
+  gap: 1rem;
+  animation: slideIn 0.4s ease;
+}
+
+.aslide-content.active {
+  display: flex;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.aslide-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 0.8rem;
+  border-radius: 10px;
+  background: #fdf6f0;
+  border: 1px solid #ecddd8;
+  transition: all 0.3s ease;
+}
+
+.aslide-item:hover {
+  border-color: #cc0000;
+  transform: translateX(4px);
+}
+
+.aslide-year {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #cc0000;
+  background: rgba(204,0,0,0.08);
+  padding: 0.3rem 0.6rem;
+  border-radius: 50px;
+  white-space: nowrap;
+  min-width: 90px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.aslide-icon {
+  font-size: 1.5rem;
+  min-width: 36px;
+  text-align: center;
+}
+
+.aslide-item h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 0.2rem;
+}
+
+.aslide-item p {
+  font-size: 0.8rem;
+  color: #666666;
+  line-height: 1.5;
+  margin: 0;
+}
+
 /* SKILLS */
 .skills { background: var(--bg); }
 .skills-tabs { display: flex; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap; }

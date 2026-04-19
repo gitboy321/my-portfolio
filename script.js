@@ -167,3 +167,18 @@ if (slides.length > 0) {
     slideshowTimer = setInterval(nextSlide, 4000);
   });
 }
+
+
+// ABOUT SECTION SLIDER
+const aslidesBtns = document.querySelectorAll('.aslide-btn');
+const aslidesContent = document.querySelectorAll('.aslide-content');
+
+aslidesBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-slide');
+    aslidesBtns.forEach(b => b.classList.remove('active'));
+    aslidesContent.forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`aslide-${target}`).classList.add('active');
+  });
+});
