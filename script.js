@@ -243,22 +243,20 @@ function goToSection(section) {
   document.querySelector(section)?.scrollIntoView({ behavior: 'smooth' });
 }
 
-// LOADING SCREEN
-// LOADING SCREEN
-function hideLoader() {
-  const loader = document.getElementById('loader');
+
+// LOADING SCREEN - Simple fix
+const loader = document.getElementById('loader');
+
+// Hide immediately after 3 seconds no matter what
+setTimeout(() => {
   if (loader) {
-    loader.classList.add('hidden');
+    loader.style.opacity = '0';
+    loader.style.transition = 'opacity 0.8s ease';
     setTimeout(() => {
       loader.style.display = 'none';
     }, 800);
   }
-}
-
-window.addEventListener('load', () => {
-  setTimeout(hideLoader, 2500);
-});
-
+}, 3000);
 // Fallback — force hide after 4 seconds no matter what
 setTimeout(hideLoader, 4000);
 
