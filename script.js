@@ -244,11 +244,23 @@ function goToSection(section) {
 }
 
 // LOADING SCREEN
+// LOADING SCREEN
+function hideLoader() {
+  const loader = document.getElementById('loader');
+  if (loader) {
+    loader.classList.add('hidden');
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 800);
+  }
+}
+
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden');
-  }, 2500);
+  setTimeout(hideLoader, 2500);
 });
+
+// Fallback — force hide after 4 seconds no matter what
+setTimeout(hideLoader, 4000);
 
 // BACK TO TOP
 const backToTop = document.getElementById('backToTop');
