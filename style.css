@@ -82,23 +82,35 @@ body {
   justify-content: space-between;
   padding: 0 2rem;
   height: 60px;
-  background: rgba(255, 255, 255, 0.05) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(204, 0, 0, 0.15),
+    rgba(0, 50, 200, 0.1),
+    rgba(100, 0, 200, 0.12)
+  ) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 50px;
   transition: all 0.3s ease;
   box-sizing: border-box;
   box-shadow:
-    0 4px 30px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.1) !important;
+    0 4px 30px rgba(0,0,0,0.4),
+    0 0 20px rgba(204,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.08) !important;
 }
 
 .navbar.scrolled {
-  background: rgba(13,13,13,0.6) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(204, 0, 0, 0.2),
+    rgba(0, 50, 200, 0.15),
+    rgba(100, 0, 200, 0.18)
+  ) !important;
   box-shadow:
-    0 8px 32px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+    0 8px 32px rgba(0,0,0,0.5),
+    0 0 30px rgba(204,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.1) !important;
 }
   
   .nav-logo-img {
@@ -336,7 +348,7 @@ section {
   font-size: 0.78rem;
   color: var(--muted);
   letter-spacing: 0.1em;
-  animation: bounce 2s ease-in-out infinite;
+  animation: fluidFlow 20s ease infinite;
 }
 @keyframes bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -1126,10 +1138,20 @@ section {
 
 
 /* ADDITIONAL WORKS SLIDESHOW */
-.additional { background: #fdf6f0 !important; animation: none !important; }
-.additional .section-title { color: #111111 !important; }
+.additional {
+  background: rgba(10, 5, 20, 0.85) !important;
+  animation: none !important;
+  backdrop-filter: blur(40px) !important;
+  -webkit-backdrop-filter: blur(40px) !important;
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+}
+.additional .section-title { color: #ffffff !important; }
 .additional .section-label { color: #cc0000 !important; }
-.additional-sub { color: #666666 !important; }
+.additional-sub { color: #888888 !important; }
+.slide-btn { background: rgba(255,255,255,0.1) !important; border: 1px solid rgba(255,255,255,0.15) !important; color: #ffffff !important; }
+.slide-btn:hover { background: #cc0000 !important; border-color: #cc0000 !important; }
+.slide-dot { background: rgba(255,255,255,0.2) !important; }
+.slide-dot.active { background: #cc0000 !important; }
 
 .slideshow-wrap {
   position: relative;
