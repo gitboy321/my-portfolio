@@ -217,7 +217,7 @@ section {
   overflow: hidden;
   padding: 120px 5% 80px;
   text-align: center;
-  background: linear-gradient(
+  background: #0d0d0d;(
     125deg,
     #0d1a0d,
     #1a0d0d,
@@ -231,11 +231,50 @@ section {
   -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(204, 0, 0, 0.4),
+    rgba(0, 50, 200, 0.3),
+    rgba(0, 180, 100, 0.3),
+    rgba(180, 0, 255, 0.3),
+    rgba(255, 150, 0, 0.3),
+    rgba(204, 0, 0, 0.4)
+  );
+  background-size: 400% 400%;
+  animation: fluidFlow 8s ease infinite;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 0;
+}
+.hero-content, .hero-bg-text, .hero-scroll-hint {
+  position: relative;
+  z-index: 2;
+}
+@keyframes fluidFlow {
+  0% { background-position: 0% 50%; transform: rotate(0deg) scale(1); }
+  25% { background-position: 100% 50%; transform: rotate(90deg) scale(1.1); }
+  50% { background-position: 100% 0%; transform: rotate(180deg) scale(1); }
+  75% { background-position: 0% 100%; transform: rotate(270deg) scale(1.1); }
+  100% { background-position: 0% 50%; transform: rotate(360deg) scale(1); }
+}
+
 {
   background-size: 400% 400%;
   animation: gradientShift 12s ease infinite;
-  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 .hero-bg-text {
   position: absolute;
