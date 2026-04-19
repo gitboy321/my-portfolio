@@ -182,3 +182,200 @@ aslidesBtns.forEach(btn => {
     document.getElementById(`aslide-${target}`).classList.add('active');
   });
 });
+
+// SEARCH BAR
+const searchInput = document.getElementById('navSearch');
+const searchResults = document.getElementById('searchResults');
+
+const searchData = [
+  { title: 'About Me', section: '#about', icon: '👤' },
+  { title: 'Experience', section: '#experience', icon: '💼' },
+  { title: 'Skills', section: '#skills', icon: '⚡' },
+  { title: 'Projects', section: '#projects', icon: '🚀' },
+  { title: 'Data Analyst Projects', section: '#projects', icon: '📊' },
+  { title: 'Graphic Design Projects', section: '#projects', icon: '🎨' },
+  { title: 'Developer Projects', section: '#projects', icon: '💻' },
+  { title: 'Contact Me', section: '#contact', icon: '📧' },
+  { title: 'Download Resume', section: '#about', icon: '📄' },
+  { title: 'Additional Works', section: '#additional', icon: '📸' },
+  { title: 'Sales Dashboard', section: '#projects', icon: '📈' },
+  { title: 'Hospital Dashboard', section: '#projects', icon: '🏥' },
+  { title: 'Car Price Predictor', section: '#projects', icon: '🚗' },
+  { title: 'London Airbnb', section: '#projects', icon: '🏠' },
+  { title: 'Bank Customer Churn', section: '#projects', icon: '🏦' },
+];
+
+if (searchInput) {
+  searchInput.addEventListener('input', () => {
+    const query = searchInput.value.toLowerCase().trim();
+    if (!query) { searchResults.style.display = 'none'; return; }
+
+    const filtered = searchData.filter(item =>
+      item.title.toLowerCase().includes(query)
+    );
+
+    if (filtered.length === 0) {
+      searchResults.style.display = 'none';
+      return;
+    }
+
+    searchResults.innerHTML = filtered.map(item => `
+      <div class="search-result-item" onclick="goToSection('${item.section}')">
+        <span>${item.icon}</span>
+        <span>${item.title}</span>
+      </div>
+    `).join('');
+
+    searchResults.style.display = 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-search')) {
+      searchResults.style.display = 'none';
+      searchInput.value = '';
+    }
+  });
+}
+
+function goToSection(section) {
+  searchResults.style.display = 'none';
+  searchInput.value = '';
+  document.querySelector(section)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+// LOADING SCREEN
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 2500);
+});
+
+// BACK TO TOP
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// TYPING ANIMATION
+const roles = ['Data Analyst', 'Graphic Designer', 'Software Developer'];
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 100;
+
+const roleSlider = document.querySelector('.role-slider');
+if (roleSlider) {
+  roleSlider.innerHTML = '<span class="typed-text" id="typedText"></span><span class="typed-cursor">|</span>';
+}
+
+function typeEffect() {
+  const typedText = document.getElementById('typedText');
+  if (!typedText) return;
+
+  const currentRole = roles[roleIndex];
+
+  if (!isDeleting) {
+    typedText.textContent = currentRole.substring(0, charIndex + 1);
+    charIndex++;
+    typingSpeed = 100;
+    if (charIndex === currentRole.length) {
+      isDeleting = true;
+      typingSpeed = 2000;
+    }
+  } else {
+    typedText.textContent = currentRole.substring(0, charIndex - 1);
+    charIndex--;
+    typingSpeed = 50;
+    if (charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      typingSpeed = 300;
+    }
+  }
+  setTimeout(typeEffect, typingSpeed);
+}
+
+typeEffect();
+
+// PARTICLE EFFECTS
+const canvas = document.getElementById('particleCanvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 3 + 0.5;
+      this.speedX = (Math.random() - 0.5) * 0.5;
+      this.speedY = (Math.random() - 0.5) * 0.5;
+      this.opacity = Math.random() * 0.5 + 0.1;
+      const colors = [
+        `rgba(204,0,0,${this.opacity})`,
+        `rgba(0,100,255,${this.opacity})`,
+        `rgba(100,0,255,${this.opacity})`,
+        `rgba(0,200,100,${this.opacity})`,
+        `rgba(255,150,0,${this.opacity})`,
+      ];
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x < 0 || this.x > canvas.width ||
+          this.y < 0 || this.y > canvas.height) {
+        this.reset();
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 80; i++) {
+    particles.push(new Particle());
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+
+    // Connect nearby particles
+    particles.forEach((p1, i) => {
+      particles.slice(i + 1).forEach(p2 => {
+        const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(204,0,0,${0.1 * (1 - dist/100)})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+}
