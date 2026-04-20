@@ -80,79 +80,95 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
-  height: 60px;
+  padding: 0 1.5rem;
+  height: 56px;
   background: linear-gradient(
     135deg,
-    rgba(204, 0, 0, 0.15),
-    rgba(0, 50, 200, 0.1),
-    rgba(100, 0, 200, 0.12)
+    rgba(204,0,0,0.08),
+    rgba(0,0,50,0.12),
+    rgba(50,0,100,0.08)
   ) !important;
-  backdrop-filter: blur(25px) !important;
-  -webkit-backdrop-filter: blur(25px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(30px) !important;
+  -webkit-backdrop-filter: blur(30px) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
   border-radius: 50px;
   transition: all 0.3s ease;
   box-sizing: border-box;
-  box-shadow:
-    0 4px 30px rgba(0,0,0,0.4),
-    0 0 20px rgba(204,0,0,0.1),
-    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3) !important;
 }
 
-.navbar.scrolled {
-  background: linear-gradient(
-    135deg,
-    rgba(204, 0, 0, 0.2),
-    rgba(0, 50, 200, 0.15),
-    rgba(100, 0, 200, 0.18)
-  ) !important;
-  box-shadow:
-    0 8px 32px rgba(0,0,0,0.5),
-    0 0 30px rgba(204,0,0,0.15),
-    inset 0 1px 0 rgba(255,255,255,0.1) !important;
+.nav-logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
-  
-  .nav-logo-img {
-    height: 30px;
-    width: auto;
-    object-fit: contain;
-  }
-.dot { color: var(--accent); }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .nav-links a {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.03em;
-  color: #aaaaaa;
-  transition: color var(--transition);
-  position: relative;
-  text-decoration: none;
-}
-  
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 0;
-    transition: none;
-  }
-  .hamburger { display: none; ... }
-
-.hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--text);
-  transition: all var(--transition);
-}
-.nav-links a,
-.nav-links a:hover,
-.nav-links a:visited,
-.nav-links a.active {
-  color: #ffffff;
+  color: #aaaaaa !important;
   text-decoration: none !important;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffffff !important;
+}
+
+/* Resume button in navbar */
+.nav-resume-btn {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  background: #cc0000;
+  color: #ffffff !important;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-resume-btn:hover {
+  background: #ff0000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(204,0,0,0.4);
+}
+
+/* Hide resume btn on mobile */
+@media (max-width: 768px) {
+  .nav-resume-btn { display: none; }
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 10px;
+    right: 10px;
+    background: rgba(13,13,13,0.97) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 16px !important;
+    padding: 1.5rem !important;
+    flex-direction: column;
+    gap: 1rem;
+    transform: translateY(-130%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+  .nav-links.open { transform: translateY(0); }
+  .hamburger { display: flex !important; }
 }
 /* BUTTONS */
 .btn {
