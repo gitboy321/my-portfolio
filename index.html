@@ -39,20 +39,26 @@
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-logo">
-      <img src="Photos/Bklogo.png" alt="BK Logo" class="nav-logo-img" />
-    </div>
-  
+      <img loading="lazy" src="Photos/Bklogo.png" alt="BK Logo" class="nav-logo-img" />
+      </div>
+      <div class="nav-search">
+        <input type="text" id="navSearch" placeholder="Search..." />
+        <span class="search-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </span>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#additional">More</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-  
-    <a href="resumes/S_Bharath_Kumar_Data_Analyst.pdf" class="nav-resume-btn" download>
-      Resume ↓
-    </a>
-  
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
