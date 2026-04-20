@@ -194,8 +194,16 @@ body {
 section {
   width: 100%;
   box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s ease;
 }
-.section { padding: 120px 0; }
+.section { padding: 120px 0;
+ }
+ .section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 .container {
   max-width: 1100px;
   width: 100%;
@@ -229,14 +237,11 @@ section {
   overflow: hidden;
   padding: 120px 5% 80px;
   text-align: center;
-  background: #0d0d0d;(
+  background: linear-gradient(
     125deg,
     #0d1a0d,
     #1a0d0d,
-    #0d0d1a,
-    #1a1a0d,
-    #0d1a1a,
-    #0d0d0d
+    #0d0d1a
   );
   background-size: 400% 400%;
   animation: gradientShift 12s ease infinite;
@@ -618,12 +623,12 @@ section {
   border-color: #2a2a2a !important;;
     border-radius: var(--radius);
     overflow: hidden;
-    transition: all var(--transition);
+    transition: transform 0.3s ease;
     color: #f0ede8 !important
   }
  /* Clean AWS-style hover on all cards */
 .project-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   border-color: #d0d0d0;
 }
@@ -1565,7 +1570,7 @@ body {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  backdrop-filter: blur(60px);
+  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(60px);
   z-index: 0;
 }
@@ -1740,12 +1745,9 @@ img {
 
 /* NAVBAR TRANSPARENCY */
 .navbar {
-  background: linear-gradient(
-    135deg,
-    rgba(204,0,0,0.08),
-    rgba(0,0,50,0.12),
-    rgba(50,0,100,0.08)
-  ) !important;
+  background: rgba(20,20,20,0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(30px) !important;
   -webkit-backdrop-filter: blur(30px) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
