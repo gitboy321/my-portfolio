@@ -2066,14 +2066,3 @@ body {
   .about-stats { flex-direction: column !important; align-items: center !important; }
 }
 
-window.addEventListener('scroll', () => {
-  let scrollPercent = (window.scrollY / document.body.scrollHeight) * 100;
-
-  if (scrollPercent > 50) {
-    gtag('event', 'scroll_50');
-  }
-});
-
-setTimeout(() => {
-  gtag('event', 'time_spent_30s');
-}, 30000);
