@@ -1155,7 +1155,7 @@ section {
 
 /* ADDITIONAL WORKS SLIDESHOW */
 .additional {
-  background: #0a0a0f !important;
+  background: #c900fb !important;
   background-image:
     radial-gradient(ellipse at top left, rgba(204,0,0,0.12) 0%, transparent 50%),
     radial-gradient(ellipse at bottom right, rgba(0,50,200,0.1) 0%, transparent 50%),
@@ -1165,7 +1165,7 @@ section {
   -webkit-backdrop-filter: blur(40px) !important;
 }
 
-.additional .section-title { color: #ffffff !important; }
+.additional .section-title { color: #ff09da !important; }
 .additional .section-label { color: #cc0000 !important; }
 .additional-sub { color: #888888 !important; }
 .slide-btn { background: rgba(255,255,255,0.1) !important; border: 1px solid rgba(255,255,255,0.15) !important; color: #ffffff !important; }
@@ -1189,7 +1189,7 @@ section {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-  background: #f0f0f0;
+  background: #d900ff;
 }
 
 .slideshow {
