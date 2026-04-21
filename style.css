@@ -1168,7 +1168,7 @@ section {
 .additional .section-title { color: #fbecf9 !important; }
 .additional .section-label { color: #cc0000 !important; }
 .additional-sub { color: #888888 !important; }
-.slide-btn { background: rgba(255,255,255,0.1) !important; border: 1px solid rgba(255,255,255,0.15) !important; color: #ff00f2 !important; }
+.slide-btn { background: rgba(255,255,255,0.1) !important; border: 1px solid rgba(255,255,255,0.15) !important; color: #0e0c0e !important; }
 .slide-btn:hover { background: #cc0000 !important; border-color: #cc0000 !important; }
 .slide-dot { background: rgba(255,255,255,0.2) !important; }
 .slide-dot.active { background: #cc0000 !important; }
@@ -1227,7 +1227,7 @@ section {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #ffffff;
+  background: #cc00ff;
   border: 1.5px solid #e0e0e0;
   color: #111111;
   width: 48px;
