@@ -1,107 +1,207 @@
-// NAVBAR SCROLL
+/* ===== BHARATH KUMAR — MODERN SCRIPT ===== */
+
+// ─── INJECT GRADIENT FOR SKILL RINGS ─────────────────────────────────────────
+(function injectRingGradient() {
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const defsSvg = document.createElementNS(svgNS, 'svg');
+  defsSvg.setAttribute('width', '0');
+  defsSvg.setAttribute('height', '0');
+  defsSvg.style.position = 'absolute';
+  defsSvg.innerHTML = `
+    <defs>
+      <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#5b5bf0"/>
+        <stop offset="100%" stop-color="#9b5bf0"/>
+      </linearGradient>
+    </defs>`;
+  document.body.appendChild(defsSvg);
+})();
+
+// ─── DARK MODE TOGGLE ────────────────────────────────────────────────────────
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle?.querySelector('.theme-icon');
+const savedTheme = localStorage.getItem('theme') ||
+  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+document.documentElement.setAttribute('data-theme', savedTheme);
+if (themeIcon) themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+themeToggle?.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  if (themeIcon) themeIcon.textContent = next === 'dark' ? '☀️' : '🌙';
+});
+
+// ─── CURSOR GLOW ──────────────────────────────────────────────────────────────
+const cursorGlow = document.getElementById('cursorGlow');
+let glowVisible = false;
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.addEventListener('mousemove', (e) => {
+    if (cursorGlow) {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+      if (!glowVisible) { cursorGlow.style.opacity = '1'; glowVisible = true; }
+    }
+  });
+  document.addEventListener('mouseleave', () => {
+    if (cursorGlow) cursorGlow.style.opacity = '0';
+    glowVisible = false;
+  });
+}
+
+// ─── SCROLL PROGRESS BAR ──────────────────────────────────────────────────────
+const scrollProgress = document.getElementById('scrollProgress');
+
+// ─── NAVBAR SCROLL + ACTIVE LINK ──────────────────────────────────────────────
 const navbar = document.getElementById('navbar');
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+
+  // progress bar
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  if (scrollProgress) scrollProgress.style.width = `${(scrollTop / docHeight) * 100}%`;
+
+  // active link
   let current = '';
   sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 100) {
-      current = section.getAttribute('id');
-    }
+    if (window.scrollY >= section.offsetTop - 130) current = section.getAttribute('id');
   });
   navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
+    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
   });
-});
+}, { passive: true });
 
-// HAMBURGER
+// ─── HAMBURGER ────────────────────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const navLinksEl = document.getElementById('navLinks');
-
 if (hamburger) {
   hamburger.addEventListener('click', () => {
     navLinksEl.classList.toggle('open');
+    hamburger.classList.toggle('active');
   });
-  navLinksEl.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => navLinksEl.classList.remove('open'));
-  });
+  navLinksEl.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', () => {
+      navLinksEl.classList.remove('open');
+      hamburger.classList.remove('active');
+    })
+  );
 }
 
-// TYPING ANIMATION for roles
+// ─── TYPING ANIMATION ─────────────────────────────────────────────────────────
 const roles = ['Data Analyst', 'Graphic Designer', 'Software Developer'];
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 120;
+let roleIndex = 0, charIndex = 0, isDeleting = false, typingSpeed = 110;
 
-const roleSlider = document.querySelector('.role-slider');
-if (roleSlider) {
-  roleSlider.innerHTML = '<span class="typed-text" id="typedText"></span><span class="typed-cursor">|</span>';
-  function typeEffect() {
-    const typedText = document.getElementById('typedText');
-    if (!typedText) return;
-    const currentRole = roles[roleIndex];
-    if (!isDeleting) {
-      typedText.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
-      typingSpeed = 120;
-      if (charIndex === currentRole.length) {
-        isDeleting = true;
-        typingSpeed = 2000;
-      }
-    } else {
-      typedText.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
-      typingSpeed = 60;
-      if (charIndex === 0) {
-        isDeleting = false;
-        roleIndex = (roleIndex + 1) % roles.length;
-        typingSpeed = 400;
-      }
-    }
-    setTimeout(typeEffect, typingSpeed);
+function typeEffect() {
+  const typedText = document.getElementById('typedText');
+  if (!typedText) return;
+  const currentRole = roles[roleIndex];
+  if (!isDeleting) {
+    typedText.textContent = currentRole.substring(0, charIndex + 1);
+    charIndex++; typingSpeed = 110;
+    if (charIndex === currentRole.length) { isDeleting = true; typingSpeed = 1800; }
+  } else {
+    typedText.textContent = currentRole.substring(0, charIndex - 1);
+    charIndex--; typingSpeed = 55;
+    if (charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; typingSpeed = 400; }
   }
-  typeEffect();
+  setTimeout(typeEffect, typingSpeed);
+}
+typeEffect();
+
+// Cycle bento role pills in sync
+const bentoPills = document.querySelectorAll('.brole');
+let bentoRoleIdx = 0;
+if (bentoPills.length) {
+  setInterval(() => {
+    bentoPills.forEach(p => p.classList.remove('active'));
+    bentoRoleIdx = (bentoRoleIdx + 1) % bentoPills.length;
+    bentoPills[bentoRoleIdx].classList.add('active');
+  }, 2800);
 }
 
-// SKILLS TABS
+// ─── SKILLS TABS ─────────────────────────────────────────────────────────────
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const target = btn.getAttribute('data-tab');
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
     btn.classList.add('active');
-    const el = document.getElementById(`tab-${target}`);
-    if (el) el.classList.add('active');
+    const tab = document.getElementById(`tab-${target}`);
+    tab?.classList.add('active');
+    if (tab) animateRingsIn(tab.querySelectorAll('.ring-fill'));
   });
 });
 
-// ABOUT SLIDER TABS
+// ─── SKILL RINGS ─────────────────────────────────────────────────────────────
+const CIRCUMFERENCE = 2 * Math.PI * 32; // r=32
+
+function animateRingsIn(fills) {
+  fills.forEach(fill => {
+    const pct = parseFloat(fill.getAttribute('data-pct')) / 100;
+    const offset = CIRCUMFERENCE * (1 - pct);
+    fill.style.transition = 'none';
+    fill.style.strokeDashoffset = CIRCUMFERENCE;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        fill.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(0.22,1,0.36,1) 0.2s';
+        fill.style.strokeDashoffset = offset;
+      });
+    });
+  });
+}
+
+document.querySelectorAll('.ring-fill').forEach(fill => {
+  fill.style.strokeDasharray = CIRCUMFERENCE;
+  fill.style.strokeDashoffset = CIRCUMFERENCE;
+});
+
+const ringObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateRingsIn(entry.target.querySelectorAll('.ring-fill'));
+      ringObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.tab-content').forEach(tab => ringObserver.observe(tab));
+
+// ─── ABOUT SLIDER TABS ────────────────────────────────────────────────────────
 document.querySelectorAll('.aslide-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const target = btn.getAttribute('data-slide');
     document.querySelectorAll('.aslide-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.aslide-content').forEach(c => c.classList.remove('active'));
     btn.classList.add('active');
-    const el = document.getElementById(`aslide-${target}`);
-    if (el) el.classList.add('active');
+    document.getElementById(`aslide-${target}`)?.classList.add('active');
   });
 });
 
-// PROJECTS FILTER
+// ─── PROJECTS FILTER ─────────────────────────────────────────────────────────
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const filter = btn.getAttribute('data-filter');
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('.project-card').forEach(card => {
-      if (filter === 'all' || card.getAttribute('data-cat') === filter) {
+      const show = filter === 'all' || card.getAttribute('data-cat') === filter;
+      if (show) {
         card.style.display = 'block';
+        requestAnimationFrame(() => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          requestAnimationFrame(() => {
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
+        });
       } else {
         card.style.display = 'none';
       }
@@ -109,11 +209,10 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-// PHOTO SLIDESHOW
-const slides = document.querySelectorAll('.slide');
+// ─── CERTIFICATES SLIDESHOW ───────────────────────────────────────────────────
+const slides = document.querySelectorAll('#slideshow .slide');
 const dotsContainer = document.getElementById('slideDots');
-let currentSlide = 0;
-let slideshowTimer;
+let currentSlide = 0, slideshowTimer;
 
 if (slides.length > 0 && dotsContainer) {
   slides.forEach((_, i) => {
@@ -132,145 +231,137 @@ if (slides.length > 0 && dotsContainer) {
     document.querySelectorAll('.slide-dot')[currentSlide]?.classList.add('active');
     resetTimer();
   }
-
   function resetTimer() {
     clearInterval(slideshowTimer);
-    slideshowTimer = setInterval(() => goToSlide(currentSlide + 1), 4000);
+    slideshowTimer = setInterval(() => goToSlide(currentSlide + 1), 4500);
   }
 
-  const nextBtn = document.getElementById('slideNext');
-  const prevBtn = document.getElementById('slidePrev');
-  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+  document.getElementById('slideNext')?.addEventListener('click', () => goToSlide(currentSlide + 1));
+  document.getElementById('slidePrev')?.addEventListener('click', () => goToSlide(currentSlide - 1));
 
   const wrap = document.querySelector('.slideshow-wrap');
   if (wrap) {
     wrap.addEventListener('mouseenter', () => clearInterval(slideshowTimer));
     wrap.addEventListener('mouseleave', resetTimer);
   }
-
-  slideshowTimer = setInterval(() => goToSlide(currentSlide + 1), 4000);
+  slideshowTimer = setInterval(() => goToSlide(currentSlide + 1), 4500);
 }
 
-// SCROLL REVEAL
+// ─── SCROLL REVEAL ────────────────────────────────────────────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
+      entry.target.classList.add('visible');
       revealObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.skill-card, .project-card, .contact-item, .stat, .timeline-content').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(30px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+document.querySelectorAll(
+  '.section-title, .section-label, .skill-card, .project-card, .contact-item, ' +
+  '.stat, .timeline-content, .timeline-item, .about-text p, .about-photo-wrap, ' +
+  '.about-slider, .slideshow-wrap, .contact-form, .resume-btns, .bento-card'
+).forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = `${(i % 7) * 0.055}s`;
   revealObserver.observe(el);
 });
 
-// BACK TO TOP
+// ─── MAGNETIC BUTTONS ─────────────────────────────────────────────────────────
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.25}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+      btn.style.transform = '';
+    });
+    btn.addEventListener('mouseenter', () => {
+      btn.style.transition = 'transform 0.15s ease';
+    });
+  });
+}
+
+// ─── BACK TO TOP ──────────────────────────────────────────────────────────────
 const backToTop = document.getElementById('backToTop');
 if (backToTop) {
   window.addEventListener('scroll', () => {
     backToTop.classList.toggle('visible', window.scrollY > 500);
-  });
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  }, { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-// 3D TILT ON PROJECT CARDS
-document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
-    card.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg) translateY(-6px)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) translateY(0)';
-  });
-});
-
-// SEARCH BAR
-const searchInput = document.getElementById('navSearch');
-const searchResults = document.getElementById('searchResults');
-
-const searchData = [
-  { title: 'About Me', section: '#about', icon: '👤' },
-  { title: 'Experience', section: '#experience', icon: '💼' },
-  { title: 'Skills', section: '#skills', icon: '⚡' },
-  { title: 'Projects', section: '#projects', icon: '🚀' },
-  { title: 'Contact Me', section: '#contact', icon: '📧' },
-  { title: 'Download Resume', section: '#about', icon: '📄' },
-  { title: 'Sales Dashboard', section: '#projects', icon: '📊' },
-  { title: 'Hospital Dashboard', section: '#projects', icon: '🏥' },
-  { title: 'Car Price Predictor', section: '#projects', icon: '🚗' },
-  { title: 'London Airbnb', section: '#projects', icon: '🏠' },
-  { title: 'Bank Customer Churn', section: '#projects', icon: '🏦' },
-];
-
-if (searchInput && searchResults) {
-  searchInput.addEventListener('input', () => {
-    const query = searchInput.value.toLowerCase().trim();
-    if (!query) { searchResults.style.display = 'none'; return; }
-    const filtered = searchData.filter(item => item.title.toLowerCase().includes(query));
-    if (!filtered.length) { searchResults.style.display = 'none'; return; }
-    searchResults.innerHTML = filtered.map(item =>
-      `<div class="search-result-item" onclick="goToSection('${item.section}')">${item.icon} ${item.title}</div>`
-    ).join('');
-    searchResults.style.display = 'block';
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.nav-search')) {
-      searchResults.style.display = 'none';
-      searchInput.value = '';
+// ─── CONTACT FORM ────────────────────────────────────────────────────────────
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(contactForm);
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch(contactForm.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (res.ok) {
+        document.getElementById('formSuccess').style.display = 'block';
+        contactForm.reset();
+        btn.textContent = 'Sent ✓';
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
     }
   });
 }
 
-function goToSection(section) {
-  if (searchResults) searchResults.style.display = 'none';
-  if (searchInput) searchInput.value = '';
-  document.querySelector(section)?.scrollIntoView({ behavior: 'smooth' });
-}
+// ===== GALLERY SLIDESHOW =====
 
-// PARTICLES
-const canvas = document.getElementById('particleCanvas');
-if (canvas) {
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
+const gallerySlides = document.querySelectorAll('.gallery-slide');
+const galleryDotsContainer = document.getElementById('galleryDots');
 
-  const particles = Array.from({ length: 60 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: Math.random() * 2 + 0.5,
-    speedX: (Math.random() - 0.5) * 0.4,
-    speedY: (Math.random() - 0.5) * 0.4,
-    color: ['rgba(204,0,0,0.4)', 'rgba(0,100,255,0.3)', 'rgba(100,0,255,0.3)', 'rgba(0,180,100,0.3)'][Math.floor(Math.random() * 4)]
-  }));
+let galleryCurrent = 0;
+let galleryTimer;
 
-  function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.x += p.speedX;
-      p.y += p.speedY;
-      if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.fill();
+if (gallerySlides.length > 0 && galleryDotsContainer) {
+
+    gallerySlides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.classList.add('slide-dot');
+        if(i === 0) dot.classList.add('active');
+
+        dot.addEventListener('click', () => galleryGo(i));
+
+        galleryDotsContainer.appendChild(dot);
     });
-    requestAnimationFrame(animateParticles);
-  }
-  animateParticles();
+
+    function galleryGo(index){
+
+        gallerySlides[galleryCurrent].classList.remove('active');
+        document.querySelectorAll('#galleryDots .slide-dot')[galleryCurrent].classList.remove('active');
+
+        galleryCurrent = (index + gallerySlides.length) % gallerySlides.length;
+
+        gallerySlides[galleryCurrent].classList.add('active');
+        document.querySelectorAll('#galleryDots .slide-dot')[galleryCurrent].classList.add('active');
+
+        resetGallery();
+    }
+
+    function resetGallery(){
+        clearInterval(galleryTimer);
+        galleryTimer = setInterval(() => galleryGo(galleryCurrent + 1), 4500);
+    }
+
+    document.getElementById('galleryNext').onclick = () => galleryGo(galleryCurrent + 1);
+    document.getElementById('galleryPrev').onclick = () => galleryGo(galleryCurrent - 1);
+
+    galleryTimer = setInterval(() => galleryGo(galleryCurrent + 1),4500);
 }
